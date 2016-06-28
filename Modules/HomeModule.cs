@@ -1,4 +1,5 @@
 using Nancy;
+using RectangleCheck.Objects;
 using System.Collections.Generic;
 
 namespace RectangleCheck
@@ -11,11 +12,19 @@ namespace RectangleCheck
         return View ["rectangle_form.cshtml"];
       };
       Get ["/rectangle_result"] = _ => {
+        Dictionary<string, object> Shapes = new Dictionary<string, object>();
         Rectangle myRectangle = new Rectangle
         (
-          Request.Query["side-length"],
-          Request.Query["side-width"]);
-        return View ["rectangle_result.cshtml", myRectangle];
+          Request.Query["side_length"],
+          Request.Query["side_width"]
+        );
+        Shapes.Add("ResultingRectangle", myRectangle);
+        if (myRectangle.IsSquare())
+        {
+          Cube myCube = new Cube(myRectangle);
+          Shapes.Add("ResultingCube", myCube);
+        }
+        return View ["rectangle_result.cshtml", Shapes];
       };
     }
   }

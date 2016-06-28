@@ -1,4 +1,5 @@
-namespace RectangleCheck
+using System.Collections.Generic;
+namespace RectangleCheck.Objects
 {
   public class Rectangle
   {
