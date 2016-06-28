@@ -4,7 +4,6 @@ namespace RectangleCheck
   {
     private int _length;
     private int _width;
-    public static List<int> myRectangle = new List<int> ();
     public Rectangle(int Length, int Width)
     {
       _length = Length;
@@ -32,7 +31,7 @@ namespace RectangleCheck
     }
     public bool IsSquare()
     {
-      if (_length === _width)
+      if (_length == _width)
       {
         return true;
       }
